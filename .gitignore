@@ -1,0 +1,14 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Public dir
+/public
+
+# Other
+.byebug_history
+.DS_Store
+
