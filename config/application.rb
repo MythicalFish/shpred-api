@@ -22,5 +22,20 @@ module RailsTube
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.middleware.use JQuery::FileUpload::Rails::Middleware
+
+    config.paperclip_defaults = {
+      :storage => :fog,
+      :fog_credentials =>  {
+        provider: 'AWS',
+        aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        aws_secret_access_key: ENV['AWS_SECRET_KEY'],
+        region: ENV['AWS_REGION']
+      },
+      :fog_directory => ENV['RAILSTUBE_AWS_BUCKET'],
+      :fog_host => 'http://content.shp.red'
+    }
+
   end
 end
