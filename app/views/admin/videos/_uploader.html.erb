@@ -1,0 +1,36 @@
+<script id="template-upload" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  <table>
+    <col width="60%">
+    <col width="10%">
+    <col width="30%">
+    <tr>
+      <td class="name">&nbsp;&nbsp;&nbsp;{%=file.name%}</td>
+      <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+      <td><div class="progress progress-success progress-animated active"><div class="bar" style="width:0%;"></div></div></td>
+    </tr>
+  </table>
+  {% } %}
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('#fileupload').fileupload({
+      autoUpload: true,
+      downloadTemplateId: null,      
+      start: function() {
+        $( '#fileupload_status' ).html( 'Uploading' );
+        function myConfirmation() {
+          return 'Cancel the video upload?';
+        }
+        window.onbeforeunload = myConfirmation;
+      },
+      stop: function() {
+        $( '#fileupload_status' ).html( 'Processing' );        
+      },
+      done: function(e, data) {
+        window.location.replace( window.location.protocol + "//" + window.location.host + "/admin/videos/" + data.result.slug + '/edit' );
+      }
+    });
+  });
+</script>

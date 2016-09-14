@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914142450) do
+ActiveRecord::Schema.define(version: 20160914142659) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -85,5 +85,43 @@ ActiveRecord::Schema.define(version: 20160914142450) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "title",                limit: 255
+    t.text     "description",          limit: 65535
+    t.string   "meta_description",     limit: 255
+    t.string   "file_file_name",       limit: 255
+    t.string   "file_content_type",    limit: 255
+    t.integer  "file_file_size",       limit: 4
+    t.datetime "file_updated_at"
+    t.string   "preview_file_name",    limit: 255
+    t.string   "preview_content_type", limit: 255
+    t.integer  "preview_file_size",    limit: 4
+    t.datetime "preview_updated_at"
+    t.string   "thumb_file_name",      limit: 255
+    t.string   "thumb_content_type",   limit: 255
+    t.integer  "thumb_file_size",      limit: 4
+    t.datetime "thumb_updated_at"
+    t.string   "file_meta",            limit: 255
+    t.text     "files",                limit: 65535
+    t.boolean  "published",                          default: false
+    t.string   "slug",                 limit: 255,                    null: false
+    t.integer  "views",                limit: 4,     default: 0
+    t.string   "length",               limit: 255,   default: "0:00"
+    t.string   "dimensions",           limit: 255,   default: "0x0"
+    t.integer  "width",                limit: 4,     default: 0
+    t.integer  "height",               limit: 4,     default: 0
+    t.string   "sid",                  limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["created_at"], name: "index_videos_on_created_at", using: :btree
+  add_index "videos", ["height"], name: "index_videos_on_height", using: :btree
+  add_index "videos", ["length"], name: "index_videos_on_length", using: :btree
+  add_index "videos", ["sid"], name: "index_videos_on_sid", using: :btree
+  add_index "videos", ["slug"], name: "index_videos_on_slug", using: :btree
+  add_index "videos", ["title"], name: "index_videos_on_title", using: :btree
+  add_index "videos", ["views"], name: "index_videos_on_views", using: :btree
 
 end

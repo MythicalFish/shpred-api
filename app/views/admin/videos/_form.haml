@@ -1,0 +1,36 @@
+- if controller.action_name == 'new'
+
+  = semantic_form_for [:admin, Video.new], :html => { :multipart => true, :id => "fileupload"  } do |f|
+    #fileupload_status
+      = f.input :file, :as => :file
+      = f.action :submit
+    #files.files
+
+  = render 'uploader'
+
+- else
+  = semantic_form_for [:admin, @video] do |f|
+    = f.inputs do
+      = f.input :title
+      = f.input :meta_description
+      = f.input :description
+      = f.input :tag_list
+      %li
+        %label.label Preview image (1080x720)
+        = f.input :thumb, :as => :file
+        - if @video.thumb.present?
+          = image_tag @video.thumb, {width: 360}
+        - else
+          None
+      %li
+        %label.label Preview video (431x242)
+        = f.input :preview, :as => :file
+        - if @video.preview.present?
+          %video{width:360}
+            = tag("source", {src: @video.preview.url, type: "video/mp4"})
+        - else
+          None
+      = f.input :published, :as => :boolean
+      = f.actions do
+        = f.action :submit, :as => :button
+        = f.action :cancel, :as => :link
