@@ -33,7 +33,7 @@ module Shpred
         aws_secret_access_key: ENV['AWS_SECRET_KEY'],
         region: ENV['AWS_REGION']
       },
-      :fog_directory => ENV['RAILSTUBE_AWS_BUCKET'],
+      :fog_directory => ENV['SHPRED_BUCKET'],
       :fog_host => 'http://content.shp.red'
     }
 
