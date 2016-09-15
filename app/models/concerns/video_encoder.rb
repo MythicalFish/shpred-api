@@ -17,7 +17,7 @@ module VideoEncoder
   def encoder_request
 
     request = {
-      pipeline_id: '1463345701251-a3vqge',
+      pipeline_id: '1473942538032-l4d9yv',
       input: {
         key: input_video_path
       },
