@@ -1,7 +1,7 @@
 // SASS variable overrides must be declared before loading up Active Admin's styles.
 //
 // To view the variables that Active Admin provides, take a look at
-// `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
+// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
 // Active Admin source.
 //
 // For example, to change the sidebar width:
@@ -15,3 +15,75 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+@import "jquery.fileupload-ui";
+
+.fileinput-button {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: #838a90;
+  background: -webkit-linear-gradient(-90deg, #838a90, #414549);
+  background: -moz-linear-gradient(-90deg, #838a90, #414549);
+  background: linear, -90deg, #838a90, #414549;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  text-shadow: black 0 1px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+  border: solid 1px #484e53;
+  border-color: #484e53;
+  border-top-color: #616a71;
+  border-right-color: #484e53;
+  border-bottom-color: #363b3f;
+  border-left-color: #484e53;
+  color: #efefef;
+  cursor: pointer;
+  float: none;
+}
+#files {
+  background: #EEE;
+  margin: 20px 0 0 0;
+  padding: 10px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+}
+#files table {
+  margin: 0;
+}
+#files .size {
+  font-weight: bold;
+}
+#files .progress.progress-animated {
+  width: auto;
+  min-width: 200px;
+  height: 20px;
+  background: #222;
+  border: 1px solid #222;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  overflow: hidden;
+}
+#files .progress-animated .bar {
+  height: 20px;
+}
+.col {
+  width: 100px;
+}
+.col-details, .col-created_at {
+  width: 140px;
+}
+.col-description {
+  width: auto;
+} 
+.col.selectable {
+  width: 13px;
+}
