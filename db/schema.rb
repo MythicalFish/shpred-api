@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914142659) do
+ActiveRecord::Schema.define(version: 20170214102511) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160914142659) do
     t.string   "sid",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "private",                            default: false
   end
 
   add_index "videos", ["created_at"], name: "index_videos_on_created_at", using: :btree
