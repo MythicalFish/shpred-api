@@ -1,6 +1,6 @@
 ActiveAdmin.register Video do
 
-  permit_params :title, :description, :meta_description, :file, :preview, :thumb, :tag_list, :published
+  permit_params :title, :description, :meta_description, :file, :preview, :thumb, :tag_list, :published, :private
 
   menu :priority => 1
 
