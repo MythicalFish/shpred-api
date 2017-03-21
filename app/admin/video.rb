@@ -62,6 +62,9 @@ ActiveAdmin.register Video do
   show do
     attributes_table do
       row :title
+      row "Link" do |video|
+        link_to("Video URL", "http://shp.red/videos/#{video.slug}", target: '_blank')
+      end
       row :meta_description
       row :created_at
       row :description

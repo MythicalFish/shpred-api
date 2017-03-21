@@ -19,6 +19,8 @@
 @import "jquery.fileupload-ui";
 
 .fileinput-button {
+  position: relative;
+  white-space: nowrap;
   -webkit-border-radius: 200px;
   -moz-border-radius: 200px;
   border-radius: 200px;
@@ -47,7 +49,16 @@
   border-left-color: #484e53;
   color: #efefef;
   cursor: pointer;
-  float: none;
+  li, input {
+    list-style :none;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+  }
 }
 #files {
   background: #EEE;

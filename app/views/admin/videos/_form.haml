@@ -2,8 +2,9 @@
 
   = semantic_form_for [:admin, Video.new], :html => { :multipart => true, :id => "fileupload"  } do |f|
     #fileupload_status
-      = f.input :file, :as => :file
-      = f.action :submit
+      .fileinput-button
+        Select a file
+        = f.input :file, :as => :file
     #files.files
 
   = render 'uploader'
