@@ -19,14 +19,14 @@
       autoUpload: true,
       downloadTemplateId: null,      
       start: function() {
-        console.log('upload started')
+        console.log('upload started');
         $( '#fileupload_status' ).html( 'Uploading' );
         window.onbeforeunload = function() {
           return 'Abort the upload?';
         };
       },
       stop: function() {
-        console.log('upload stopped')
+        console.log('upload stopped');
         $( '#fileupload_status' ).html( 'Processing' );        
       },
       done: function(e, data) {
