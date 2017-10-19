@@ -1,7 +1,10 @@
 source 'http://rubygems.org'
 
 # Framework
-gem 'rails'
+gem 'rails', '>= 5.0.6', '< 5.1'
+
+# Config
+gem 'figaro'
 
 # DB
 gem 'mysql2'
@@ -13,7 +16,7 @@ gem 'haml-rails'
 gem "therubyracer", :require => 'v8'
 
 # Admin / auth
-gem 'activeadmin', :github => 'activeadmin/activeadmin'
+gem 'activeadmin', '1.1.0'
 gem 'devise'
 
 # Search / categorize

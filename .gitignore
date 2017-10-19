@@ -12,3 +12,4 @@
 .byebug_history
 .DS_Store
 
+/config/application.yml

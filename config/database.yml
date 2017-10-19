@@ -1,11 +1,11 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  database: <%= ENV['SHPRED_RDS_DB'] %>
-  username: <%= ENV['SHPRED_RDS_USER'] %>
-  password: <%= ENV['SHPRED_RDS_PASSWORD'] %>
-  host:     <%= ENV['SHPRED_RDS_ENDPOINT'] %>
-  port:     <%= ENV['SHPRED_RDS_PORT'] %>
+  database: <%= ENV['RDS_DB'] %>
+  username: <%= ENV['RDS_USER'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host:     <%= ENV['RDS_ENDPOINT'] %>
+  port:     <%= ENV['RDS_PORT'] %>
 
 development:
   <<: *default
