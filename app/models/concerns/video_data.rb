@@ -2,6 +2,31 @@ module VideoData
 
   extend ActiveSupport::Concern
 
+  RESOLUTIONS = [
+    {
+      height:   1080,
+      label:    '1080p',
+      presets: {
+        mp4: '1351620000001-000001',
+        webm: '1463861857156-mhzr7a'
+      }
+    },{
+      height:   720,
+      label:    '720p',
+      presets: {
+        mp4: '1351620000001-000010',
+        webm: '1351620000001-100250'
+      }
+    },{
+      height:   360,
+      label:    '360p',
+      presets: {
+        mp4: '1351620000001-000040',
+        webm: '1351620000001-100260'
+      }
+    }
+  ]
+
   def meta
 
     meta = {
@@ -43,7 +68,7 @@ module VideoData
 
     r = []
 
-    Video::RESOLUTIONS.each do |resolution|
+    RESOLUTIONS.each do |resolution|
       if meta[:height] >= resolution[:height]
         r << resolution
       end

@@ -21,11 +21,10 @@ gem 'devise'
 
 # Search / categorize
 gem 'ransack'
-gem 'acts-as-taggable-on'
-gem 'will_paginate'
 
 # Other
 gem 'friendly_id'
+gem 'active_model_serializers', '~> 0.10.5'
 
 # Upload / encode
 gem 'paperclip'

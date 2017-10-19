@@ -1,6 +1,6 @@
 class VideosController < ApiController
-  
   def index
-    render json: { status: :ok, nothing: true }
+    @videos = Video.all
+    render json: serialized(@videos)
   end
 end
