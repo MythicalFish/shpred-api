@@ -3,9 +3,6 @@ source 'http://rubygems.org'
 # Framework
 gem 'rails', '>= 5.0.6', '< 5.1'
 
-# Config
-gem 'figaro'
-
 # DB
 gem 'mysql2'
 
@@ -13,7 +10,7 @@ gem 'mysql2'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'haml-rails'
-gem "therubyracer", :require => 'v8'
+#gem "therubyracer", :require => 'v8'
 
 # Admin / auth
 gem 'activeadmin', '1.1.0'
@@ -28,15 +25,20 @@ gem 'active_model_serializers', '~> 0.10.5'
 
 # Upload / encode
 gem 'paperclip'
-gem 'fog'
+gem 's3_direct_upload'
 gem 'paperclip-av-transcoder'
-gem 'aws-sdk-rails'
+gem 'aws-sdk'
 
 # JS / CSS plugins
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
 gem 'basscss-rails'
 gem "font-awesome-rails"
+
+group :development do
+  # Config
+  gem 'figaro'
+end
 
 group :development, :test do
   gem 'byebug'

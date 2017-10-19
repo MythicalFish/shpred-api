@@ -42,7 +42,8 @@ class Video < ApplicationRecord
     attachment.instance.sid
   end
 
-  default_scope -> { where(published: true, private: false).order(created_at: :desc) }
+  default_scope -> { order(created_at: :desc) }
+  scope :exposed, -> { where(published: true, private: false) }
 
   def should_generate_new_friendly_id?
     title_changed?

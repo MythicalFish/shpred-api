@@ -1,6 +1,6 @@
 class VideosController < ApiController
   def index
-    @videos = Video.all
+    @videos = Video.exposed
     render json: serialized(@videos)
   end
 end
