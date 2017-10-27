@@ -22,6 +22,7 @@ gem 'ransack'
 # Other
 gem 'friendly_id'
 gem 'active_model_serializers', '~> 0.10.5'
+gem 'figaro'
 
 # Upload / encode
 gem 'paperclip'
@@ -34,11 +35,6 @@ gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
 gem 'basscss-rails'
 gem "font-awesome-rails"
-
-group :development do
-  # Config
-  gem 'figaro'
-end
 
 group :development, :test do
   gem 'byebug'

@@ -1,23 +1,17 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  database: <%= ENV['RDS_DB'] %>
-  username: <%= ENV['RDS_USER'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host:     <%= ENV['RDS_ENDPOINT'] %>
-  port:     <%= ENV['RDS_PORT'] %>
+  database: shpred
+  pool: 5
+  username: root
+  password:
 
 development:
   <<: *default
 
 test:
-  adapter: mysql2
-  encoding: utf8
-  database: railstube_test
-  pool: 5
-  username: root
-  password:
+  <<: *default
+  database: shpred_test
 
 production:
   <<: *default
-
