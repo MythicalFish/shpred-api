@@ -1,7 +1,7 @@
 class ApiSubdomain
   def self.matches? request
     return true if request.subdomain === "api"
-    return true if request.port === 4000
+    return true if request.port === 3001
     return false
   end   
 end
