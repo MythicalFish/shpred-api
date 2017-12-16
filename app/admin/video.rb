@@ -20,10 +20,7 @@ ActiveAdmin.register Video do
     def create
 
       @video = Video.new(permitted_params[:video])
-      @video.sid = SecureRandom.hex
-      @video.title = @video.file_title
-      @video.populate_meta
-
+      
       respond_to do |format|
         if @video.save
           @video.encode
@@ -41,8 +38,8 @@ ActiveAdmin.register Video do
   index do
     selectable_column
     column "Preview" do |video|
-      if video.thumbnail
-        link_to(image_tag(video.thumbnail), admin_video_path(video))
+      if video.thumbnail_url
+        link_to(image_tag(video.thumbnail_url), admin_video_path(video))
       end
     end
     column "Details" do |video|
@@ -70,7 +67,7 @@ ActiveAdmin.register Video do
       row :description
       row :tag_list
       row :thumbnail do |video|
-        image_tag(video.thumbnail)
+        image_tag(video.thumbnail_url)
       end
       row :file do |video|
         content_tag(:video,{width:360}) do

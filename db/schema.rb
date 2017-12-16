@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214102511) do
+ActiveRecord::Schema.define(version: 20171216085630) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20170214102511) do
     t.integer  "thumb_file_size"
     t.datetime "thumb_updated_at"
     t.string   "file_meta"
-    t.text     "files",                limit: 65535
+    t.text     "media_urls",           limit: 65535
     t.boolean  "published",                          default: false
     t.string   "slug",                                                null: false
     t.integer  "views",                              default: 0
