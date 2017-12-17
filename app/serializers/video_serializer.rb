@@ -1,3 +1,3 @@
 class VideoSerializer < ActiveModel::Serializer
-  attributes :id, :title, :media_urls, :length, :views
+  attributes :id, :title, :length, :views, :resolutions, :formats
 end

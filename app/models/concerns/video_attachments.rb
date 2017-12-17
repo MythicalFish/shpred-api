@@ -67,7 +67,19 @@ module VideoAttachments
     file_file_name[/.*(?=\..+$)/].gsub("_"," ").gsub("-"," ")
   end
 
-  private
+  def resolutions
+    [1080,720,360].select { |h| height >= h }
+  end
+
+  def formats
+    [:mp4, :webm]
+  end
+
+  def highest_resolution
+    resolutions.first
+  end
+
+#  private
   
   def set_media_urls
     self.media_urls = get_media_urls
@@ -77,30 +89,14 @@ module VideoAttachments
     "#{ENV['SHPRED__CDN_URL']}/#{path}"
   end
 
-  def resolutions
-    [1080,720,360].select { |h| height >= h }
-  end
-
   def get_media_urls
-
-    urls = {
-      :thumbnail => thumbnail_url,
-      :preview => preview_url,
-      :video => {
-        :mp4 =>       {},
-        :webm =>      {}
-      }
-    }
-
-    urls[:video].each do |format|
-      resolutions.each do |r|
+    formats.map { |format|
+      urls = resolutions.map { |r|
         path = "#{sid}/#{r}p/#{file_basename}.#{format}"
-        urls[:video][format][r] = "#{storage_url(path)}"
-      end
-    end
-
-    urls
-
+        [r, storage_url(path)]
+      }.to_h
+      [format, urls]
+    }.to_h
   end
 
 end
