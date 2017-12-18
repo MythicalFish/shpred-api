@@ -51,12 +51,12 @@ module VideoAttachments
     elsif file.url(:snap).present?
       path = file.url(:snap)
     end
-    return storage_url(path) if path
+    return storage_url("/#{path}") if path
   end
   
   def preview_url
     path = preview.try(:url)
-    return storage_url(path) if path
+    return storage_url("/#{path}") if path
   end
 
   def file_basename
@@ -79,21 +79,25 @@ module VideoAttachments
     resolutions.first
   end
 
+  def media_url format, resolution
+    storage_url(media_urls[format][resolution])
+  end
+
 #  private
   
   def set_media_urls
     self.media_urls = get_media_urls
   end
 
-  def storage_url path = ''
-    "#{ENV['SHPRED__CDN_URL']}/#{path}"
+  def storage_url path = '/'
+    "#{ENV['SHPRED__CDN_URL']}#{path}"
   end
 
   def get_media_urls
     formats.map { |format|
       urls = resolutions.map { |r|
-        path = "#{sid}/#{r}p/#{file_basename}.#{format}"
-        [r, storage_url(path)]
+        path = "/#{sid}/#{r}p/#{file_basename}.#{format}"
+        [r, path]
       }.to_h
       [format, urls]
     }.to_h

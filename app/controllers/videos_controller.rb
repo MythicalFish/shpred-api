@@ -29,7 +29,7 @@ class VideosController < ApiController
     {
       id: @video.id,
       title: @video.title,
-      media_url: @video.media_urls[requested_format][requested_resolution],
+      media_url: @video.media_url(requested_format, requested_resolution),
       length: @video.length,
       views: @video.views
     }
