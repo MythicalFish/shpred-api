@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216085630) do
+ActiveRecord::Schema.define(version: 20180102131153) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "namespace"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20171216085630) do
     t.string   "sid"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "private",                            default: false
+    t.boolean  "for_upwork",                         default: false
     t.index ["created_at"], name: "index_videos_on_created_at", using: :btree
     t.index ["height"], name: "index_videos_on_height", using: :btree
     t.index ["length"], name: "index_videos_on_length", using: :btree

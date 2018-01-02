@@ -6,6 +6,6 @@ class Video < ApplicationRecord
   include VideoEncoder
 
   default_scope -> { order(created_at: :desc) }
-  scope :exposed, -> { where(published: true, private: false) }
+  scope :exposed, -> { where(published: true, for_upwork: false) }
 
 end

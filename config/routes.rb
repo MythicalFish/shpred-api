@@ -9,7 +9,7 @@ end
 class AdminSubdomain
   def self.matches? request
     return true if request.subdomain === "admin"
-    return true if request.port === 3000
+    return true if request.port === 3002
     return false
   end   
 end

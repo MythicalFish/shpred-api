@@ -8,6 +8,7 @@ class VideosController < ApiController
   end
 
   def show
+    increment_viewcount
     render json: @video
   end
 
@@ -15,6 +16,11 @@ class VideosController < ApiController
 
   def set_video
     @video = Video.friendly.find(params[:id])
+  end
+
+  def increment_viewcount
+    @video.views += 1
+    @video.save!
   end
   
 end

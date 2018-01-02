@@ -15,7 +15,6 @@
       = f.input :title
       = f.input :meta_description
       = f.input :description
-      = f.input :tag_list
       %li
         %label.label Preview image (1080x720)
         = f.input :thumb, :as => :file
@@ -32,7 +31,7 @@
         - else
           None
       = f.input :published, :as => :boolean
-      = f.input :private, :as => :boolean
+      = f.input :for_upwork, :as => :boolean
       = f.actions do
         = f.action :submit, :as => :button
         = f.action :cancel, :as => :link

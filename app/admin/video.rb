@@ -1,6 +1,6 @@
 ActiveAdmin.register Video do
 
-  permit_params :title, :description, :meta_description, :file, :preview, :thumb, :tag_list, :published, :private
+  permit_params :title, :description, :meta_description, :file, :preview, :thumb, :published, :for_upwork
 
   menu :priority => 1
 
@@ -65,7 +65,6 @@ ActiveAdmin.register Video do
       row :meta_description
       row :created_at
       row :description
-      row :tag_list
       row :thumbnail do |video|
         image_tag(video.thumbnail_url)
       end
