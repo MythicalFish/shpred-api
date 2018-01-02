@@ -16,7 +16,8 @@ module VideoAttachments
       :path => ":sid/:style/:basename.:extension",
       :url => ":sid/:style/:basename.:extension",
       :styles => {
-        :snap => { :format => 'jpg', :geometry => "431x242#" }
+        :snap => { :format => 'jpg', :geometry => "431x242#" },
+        :poster => { :format => 'jpg', :geometry => "1080x720#" }
       },
       :processors => [:transcoder]
 
@@ -54,6 +55,11 @@ module VideoAttachments
     return storage_url("/#{path}") if path
   end
   
+  def poster_url
+    return thumb.url(:large) if thumb
+    return file.url(:poster) if file
+  end
+  
   def preview_url
     path = preview.try(:url)
     return storage_url("/#{path}") if path
@@ -79,27 +85,23 @@ module VideoAttachments
     resolutions.first
   end
 
-  def media_url format, resolution
-    storage_url(media_urls[format][resolution])
-  end
-
 #  private
   
   def set_media_urls
     self.media_urls = get_media_urls
   end
 
-  def storage_url path = '/'
+  def storage_url path = ''
     "#{ENV['SHPRED__CDN_URL']}#{path}"
   end
 
   def get_media_urls
-    formats.map { |format|
-      urls = resolutions.map { |r|
+    resolutions.map { |r|
+      urls = formats.map { |format|
         path = "/#{sid}/#{r}p/#{file_basename}.#{format}"
-        [r, path]
+        [format, path]
       }.to_h
-      [format, urls]
+      [r, urls]
     }.to_h
   end
 

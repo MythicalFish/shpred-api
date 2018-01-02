@@ -8,31 +8,13 @@ class VideosController < ApiController
   end
 
   def show
-    render json: video_response
+    render json: @video
   end
 
   private
 
   def set_video
-    @video = Video.find(params[:id])
+    @video = Video.friendly.find(params[:id])
   end
   
-  def requested_resolution
-    params[:resolution] || @video.highest_resolution.to_s
-  end
-
-  def requested_format
-    params[:format] || 'mp4'
-  end
-
-  def video_response
-    {
-      id: @video.id,
-      title: @video.title,
-      media_url: @video.media_url(requested_format, requested_resolution),
-      length: @video.length,
-      views: @video.views
-    }
-  end
-
 end
