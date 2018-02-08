@@ -47,22 +47,28 @@ module VideoAttachments
   end
 
   def thumbnail_url style = :small
-    if thumb.present?
-      path = thumb.url(style)
-    elsif file.url(:snap).present?
-      path = file.url(:snap)
+    Rails.cache.fetch(ckey("thumbnail_url")) do
+      if thumb.present?
+        path = thumb.url(style)
+      elsif file.url(:snap).present?
+        path = file.url(:snap)
+      end
+      return storage_url("/#{path}") if path
     end
-    return storage_url("/#{path}") if path
   end
   
   def poster_url
-    return thumb.url(:large) if thumb
-    return file.url(:poster) if file
+    Rails.cache.fetch(ckey("poster_url")) do
+      return thumb.url(:large) if thumb
+      return file.url(:poster) if file
+    end
   end
   
   def preview_url
-    path = preview.try(:url)
-    return storage_url("/#{path}") if path
+    Rails.cache.fetch(ckey("preview_url")) do
+      path = preview.try(:url)
+      return storage_url("/#{path}") if path
+    end
   end
 
   def file_basename
@@ -85,7 +91,7 @@ module VideoAttachments
     resolutions.first
   end
 
-#  private
+  private
   
   def set_media_urls
     self.media_urls = get_media_urls
@@ -103,6 +109,10 @@ module VideoAttachments
       }.to_h
       [r, urls]
     }.to_h
+  end
+
+  def ckey namespace
+    "video#{id}/#{updated_at.to_i}/#{namespace}"
   end
 
 end
